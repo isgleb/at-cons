@@ -1,8 +1,10 @@
 <template>
   <div>
     <link-input/>
+    <TimePicker/>
   </div>
 </template>
-<script setup>
-import LinkInput from 'public/components/LinkInput'
+<script setup lang="ts">
+import LinkInput from './public/components/LinkInput.vue'
+import TimePicker from "./public/components/TimePicker.vue";
 </script>
