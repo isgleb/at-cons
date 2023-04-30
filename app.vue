@@ -4,7 +4,7 @@
     <TimePicker/>
     <ClearableMultiselect :options="cities"/>
     <cell-table/>
-    <ComplexTable :table-data="products"/>
+    <ComplexTable :tableData="products"/>
   </div>
 </template>
 <script setup lang="ts">
@@ -27,7 +27,9 @@ const cities = [
 const products = ref([])
 
 onMounted(() => {
-  ProductService.getProductsMini().then((data) => (products.value = data));
+  // ProductService.getProductsMini().then((data) => (products.value = data));
+  products.value = ProductService.getProductsData()
+  console.log(products)
 });
 
 </script>
