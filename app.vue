@@ -1,14 +1,16 @@
 <template>
-  <div>
+  <div class="exercises">
     <link-input/>
     <TimePicker/>
     <ClearableMultiselect :options="cities"/>
+    <cell-table/>
   </div>
 </template>
 <script setup lang="ts">
 import LinkInput from 'public/components/LinkInput.vue'
 import TimePicker from "public/components/TimePicker.vue";
 import ClearableMultiselect from "public/components/ClearableMultiselect.vue";
+import CellTable from "public/components/CellTable.vue";
 
 const cities = [
   {name: "Москва", value: false},
@@ -17,3 +19,11 @@ const cities = [
   {name: "Берлин", value: false}
 ]
 </script>
+
+<style>
+.exercises{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+</style>
