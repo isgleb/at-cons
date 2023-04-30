@@ -9,7 +9,7 @@
             <div class="p-inputgroup w-full md:w-30rem" >
                 <MultiSelect
                     v-model="searchColumns"
-                    :options="selectedColumns"
+                    :options="tableColumns"
                     dropdownIcon=""
                     class="success"
                 >
@@ -33,7 +33,7 @@
       </template>
       {{selectedColumns}}
       {{searchColumns}}
-      <Column v-for="col of selectedColumns"  sortable :key="col" :field="col" :header="col"></Column>
+      <Column v-for="col of tableColumns"  sortable :key="col" :field="col" :header="col"></Column>
     </DataTable>
   </div>
 </template>
@@ -51,12 +51,15 @@ const props = defineProps({
   tableData: {type: Array as PropType<Array<Object>>, required: true}
 })
 
-let availableColumns
+const searchValue = ref("")
+const filteredTableData = ref()
+
+let availableColumns: string[]
 const searchColumns = ref()
 const selectedColumns = ref()
 
-const searchValue = ref("")
-const filteredTableData = ref()
+// this variable is used to keep columns order when selected columns change
+const tableColumns = ref()
 
 watch(props, () => {
   if (props.tableData) {
@@ -70,6 +73,10 @@ watch(props, () => {
 watch(selectedColumns, () => {
   searchColumns.value = searchColumns.value.filter((searchColumn: string) => {
     return selectedColumns.value?.includes(searchColumn)
+  })
+
+  tableColumns.value = availableColumns.filter((column) => {
+    return selectedColumns.value.includes(column)
   })
 })
 
