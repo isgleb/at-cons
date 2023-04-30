@@ -5,31 +5,45 @@
         tableStyle="min-width: 50rem"
         paginator :rows="5">
       <template #header>
-        <div class="flex justify-content-end" style="display:flex; flex: 4 1; gap: 5px">
-            <div class="p-inputgroup w-full md:w-30rem" >
+        <span style="display:flex; gap: 5px">
+            <span class="p-inputgroup" style="flex-grow: 8">
                 <MultiSelect
                     v-model="searchColumns"
                     :options="tableColumns"
-                    dropdownIcon=""
-                    class="success"
+                    dropdownIcon="pi pi-sliders-v"
+                    class="selector-custom-button"
                 >
-                <template v-slot:value>
-                  <i class="pi pi-sliders-v" style="color: white" ></i>
-                </template>
               </MultiSelect>
+<!--              <span class="p-input-icon-right">-->
+<!--                <i class="pi pi-times" @click="cleanFilter" v-if="searchValue !== ''"/>-->
+<!--                <InputText-->
+<!--                    style="width: 100%"-->
+<!--                    placeholder="Поиск..."-->
+<!--                    v-model="searchValue"/>-->
+<!--              </span>-->
+<!--              <span class="p-inputgroup-addon">-->
+<!--                <InputText-->
+<!--                    placeholder="Поиск..."-->
+<!--                    v-model="searchValue"/>-->
+<!--              </span>-->
               <InputText
                   placeholder="Поиск..."
-                  v-model="searchValue"/>
+                  v-model="searchValue"
+                  class="p-inputgroup-addon"
+              />
               <Button
                   @click="filterTable"
                   label="Search"
               />
-            </div>
+            </span>
             <MultiSelect
                 :options="availableColumns"
                 v-model="selectedColumns"
-                class="w-full md:w-20rem"/>
-        </div>
+                class="w-full md:w-10rem"
+                style="flex-grow: 2"
+                :maxSelectedLabels="2"
+            />
+        </span>
       </template>
       {{selectedColumns}}
       {{searchColumns}}
@@ -103,8 +117,17 @@ function cleanFilter() {
 
 </script>
 
-<style scoped>
-.success{
+<style lang="scss">
+.selector-custom-button{
   background-color: var(--green-500);
+  flex: none !important;
+  width: 3rem !important;
+
+  .p-multiselect-trigger{
+    color: #ffffff !important;
+  }
+  .p-multiselect-label-container {
+    display: none !important;
+  }
 }
 </style>
