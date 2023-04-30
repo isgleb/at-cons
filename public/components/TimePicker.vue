@@ -1,6 +1,6 @@
 <template>
   <calendar v-model="time" timeOnly>
-    <template v-slot:footer>
+    <template #footer>
       <hr>
       <div class="controls">
         <button @click="setTimeNow">Сейчас</button>

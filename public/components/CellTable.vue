@@ -22,8 +22,6 @@ const replaceWith = '<br>$&';
 
 const arr = stringData.replaceAll(searchRegExp, replaceWith)
 
-console.log(arr)
-
 products.value = [
   {value: arr}
 ]

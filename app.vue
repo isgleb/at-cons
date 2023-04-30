@@ -4,6 +4,7 @@
     <TimePicker/>
     <ClearableMultiselect :options="cities"/>
     <cell-table/>
+    <ComplexTable :table-data="products"/>
   </div>
 </template>
 <script setup lang="ts">
@@ -11,6 +12,9 @@ import LinkInput from 'public/components/LinkInput.vue'
 import TimePicker from "public/components/TimePicker.vue";
 import ClearableMultiselect from "public/components/ClearableMultiselect.vue";
 import CellTable from "public/components/CellTable.vue";
+import ComplexTable from "public/components/ComplexTable.vue";
+import {ProductService} from "public/services/ProductService";
+import {onMounted, ref} from "#imports";
 
 const cities = [
   {name: "Москва", value: false},
@@ -18,6 +22,14 @@ const cities = [
   {name: "Париж", value: false},
   {name: "Берлин", value: false}
 ]
+
+
+const products = ref([])
+
+onMounted(() => {
+  ProductService.getProductsMini().then((data) => (products.value = data));
+});
+
 </script>
 
 <style>
