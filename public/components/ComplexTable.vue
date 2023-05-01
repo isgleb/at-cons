@@ -14,23 +14,18 @@
                     class="selector-custom-button"
                 >
               </MultiSelect>
-<!--              <span class="p-input-icon-right">-->
-<!--                <i class="pi pi-times" @click="cleanFilter" v-if="searchValue !== ''"/>-->
-<!--                <InputText-->
-<!--                    style="width: 100%"-->
-<!--                    placeholder="Поиск..."-->
-<!--                    v-model="searchValue"/>-->
-<!--              </span>-->
-<!--              <span class="p-inputgroup-addon">-->
-<!--                <InputText-->
-<!--                    placeholder="Поиск..."-->
-<!--                    v-model="searchValue"/>-->
-<!--              </span>-->
-              <InputText
-                  placeholder="Поиск..."
-                  v-model="searchValue"
-                  class="p-inputgroup-addon"
-              />
+              <span class="p-input-icon-right">
+                <i class="pi pi-times" @click="cleanFilter" v-if="searchValue !== ''"/>
+                <InputText
+                    style="width: 100%"
+                    placeholder="Поиск..."
+                    v-model="searchValue"/>
+              </span>
+<!--              <InputText-->
+<!--                  placeholder="Поиск..."-->
+<!--                  v-model="searchValue"-->
+<!--                  class="p-inputgroup-addon"-->
+<!--              />-->
               <Button
                   @click="filterTable"
                   label="Search"
@@ -72,7 +67,7 @@ let availableColumns: string[]
 const searchColumns = ref()
 const selectedColumns = ref()
 
-// this variable is used to keep columns order when selected columns change
+// this variable is introduced to keep columns order when selected columns change
 const tableColumns = ref()
 
 watch(props, () => {

@@ -1,17 +1,14 @@
 <template>
-
-  <div class="card">
-    <DataTable :value="products" tableStyle="min-width: 50rem">
+    <DataTable :value="products">
       <Column field="value" header="value" style="text-wrap: none"></Column>
     </DataTable>
-  </div>
 </template>
 
 <script setup lang="ts">
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 
-import { ref } from 'vue';
+import {ref} from 'vue';
 
 const products = ref();
 
@@ -20,12 +17,11 @@ const stringData = "[13:36:53] Расчетное время: 9 мин[13:36:58]
 const searchRegExp = /\[\d{2}:\d{2}:\d{2}\]/g;
 const replaceWith = '<br>$&';
 
-const arr = stringData.replaceAll(searchRegExp, replaceWith)
+const formattedString = stringData.replaceAll(searchRegExp, replaceWith)
 
 products.value = [
-  {value: arr}
+  {value: formattedString}
 ]
-
 
 </script>
 
