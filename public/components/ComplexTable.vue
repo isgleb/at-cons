@@ -40,8 +40,8 @@
             />
         </span>
       </template>
-      {{selectedColumns}}
-      {{searchColumns}}
+<!--      {{selectedColumns}}-->
+<!--      {{searchColumns}}-->
       <Column v-for="col of tableColumns"  sortable :key="col" :field="col" :header="col"></Column>
     </DataTable>
   </div>

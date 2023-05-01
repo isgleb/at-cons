@@ -28,16 +28,19 @@ function setTimeNow(){
 
 <style scoped lang="scss">
 
+hr{
+  border: var(--surface-border) solid 1px;
+}
+
 .controls{
   display: flex;
   justify-content: space-between;
-  width: 90%;
-  margin: 20px auto;
+  margin: 1rem 4%;
 
   button{
     border: none;
-    background-color: white;
-    color: #1d4ed8;
+    background-color: var(--surface-0);
+    color: var(--blue-500);
     cursor: pointer;
   }
 }

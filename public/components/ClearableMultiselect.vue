@@ -18,17 +18,18 @@
 
 <script setup lang="ts">
 import MultiSelect from 'primevue/multiselect';
+import Button from "primevue/button";
 import {PropType} from "@vue/runtime-core";
 import {computed, ref} from "#imports";
+
+const props = defineProps({
+  options: {type: Array as PropType<string[]>}
+})
 
 const selectedOptions = ref<Array<string>>()
 
 const isSelectedEmpty = computed(()=>{
   return !(selectedOptions.value && selectedOptions.value.length > 0)
-})
-
-const props = defineProps({
-  options: {type: Array as PropType<string[]>}
 })
 
 function clear() {
