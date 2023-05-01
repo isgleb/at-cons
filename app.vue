@@ -1,10 +1,10 @@
 <template>
   <div class="exercises">
     <link-input/>
-    <TimePicker/>
-    <ClearableMultiselect :options="cities"/>
+    <time-picker/>
+    <clearable-multiselect :options="cities"/>
     <cell-table :cell-string="logString"/>
-    <ComplexTable :tableData="products"/>
+    <complex-table :tableData="products"/>
   </div>
 </template>
 <script setup lang="ts">
@@ -25,12 +25,10 @@ const cities = [
 
 const logString = "[13:36:53] Расчетное время: 9 мин[13:36:58] Открыть клапан откачки К1[13:36:58] Включить вакуумный насос[13:36:58] Закрыть клапан К5[13:36:58] Закрыть клапан дистилляции К2[13:36:58] Ожидание: 8 с[13:37:06] Заливка 2.2мл. в испаритель[13:37:06] Заданно 26.50602409638554 шагов[13:37:09] Заливка перекиси завершена[13:37:09] Открыть клапан дистилляции К2[13:42:09] Включить нагрев испарителя[13:42:09] Закрыть клапан дистилляции К2[13:42:09] конечное давление1.0960040758227925 торр[13:42:09] Выпаривание через К2[13:42:09] Выпаривание длилось5 мин[13:42:09] Откачка до 1 торр[13:42:15] Закрыть клапан откачки К1[13:43:09] Открыть клапан откачки К1[13:43:14] Аппаратное смещение 0 денсит. = -0.313683180809021[13:43:14] Закрыть клапан дистилляции К2"
 
-const products = ref([])
+const products = ref()
 
 onMounted(() => {
-  // ProductService.getProductsMini().then((data) => (products.value = data));
   products.value = ProductService.getProductsData()
-  console.log(products)
 });
 
 </script>
@@ -39,6 +37,6 @@ onMounted(() => {
 .exercises{
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 40px;
 }
 </style>

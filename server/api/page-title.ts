@@ -8,12 +8,13 @@ export default defineEventHandler((event) => {
             .then(data => {
             const openIndex = data.indexOf("<title>") + 7
             const closeIndex = data.indexOf("</title>")
-            return { title: data.substring(openIndex, closeIndex) }
+            return data.substring(openIndex, closeIndex)
 
-            }).catch(e => {
+            }).catch((err) => {
+                // return "hey"
                 throw createError({
                 statusCode: 400,
-                statusMessage: 'page request problem: ' + e.statusMessage,
+                statusMessage: 'page request problem: ' + err,
             })
         })
     } else throw createError({
