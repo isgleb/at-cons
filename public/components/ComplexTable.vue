@@ -1,43 +1,41 @@
 <template>
-  <div class="card">
-    <DataTable
-        :value="filteredTableData"
-        tableStyle="min-width: 50rem"
-        paginator :rows="5">
-      <template #header>
-        <span class="header-wrapper">
-            <span class="p-inputgroup">
-                <MultiSelect
-                    v-model="searchColumns"
-                    :options="tableColumns"
-                    class="selector-custom-button"
-                    dropdownIcon="pi pi-sliders-v"
-                >
-              </MultiSelect>
-              <span class="p-input-icon-right input-block">
-                <i class="pi pi-times" @click="cleanFilter" v-if="searchValue !== ''"/>
-                <InputText
-                    placeholder="Поиск..."
-                    v-model="searchValue"/>
-              </span>
-              <Button
-                  @click="filterTable"
-                  label="Search"
-              />
-            </span>
-            <MultiSelect
-                :options="availableColumns"
-                v-model="selectedColumns"
-                placeholder="Поля таблицы"
-                style="flex-grow: 2"
-                :maxSelectedLabels="0"
-                selectedItemsLabel="{0} пол."
+  <DataTable
+      :value="filteredTableData"
+      tableStyle="min-width: 50rem"
+      paginator :rows="5">
+    <template #header>
+      <span class="header-wrapper">
+        <span class="p-inputgroup">
+          <MultiSelect
+              v-model="searchColumns"
+              :options="tableColumns"
+              class="selector-custom-button"
+              dropdownIcon="pi pi-sliders-v"
+          />
+          <span class="p-input-icon-right input-block">
+            <i class="pi pi-times" @click="cleanFilter" v-if="searchValue !== ''"/>
+            <InputText
+                placeholder="Поиск..."
+                v-model="searchValue"
             />
+          </span>
+          <Button
+              @click="filterTable"
+              label="Search"
+          />
         </span>
-      </template>
-      <Column v-for="col of tableColumns"  sortable :key="col" :field="col" :header="col"></Column>
-    </DataTable>
-  </div>
+        <MultiSelect
+            :options="availableColumns"
+            v-model="selectedColumns"
+            placeholder="Поля таблицы"
+            style="flex-grow: 2"
+            :maxSelectedLabels="0"
+            selectedItemsLabel="{0} пол."
+        />
+      </span>
+    </template>
+    <Column v-for="col of tableColumns"  sortable :key="col" :field="col" :header="col"></Column>
+  </DataTable>
 </template>
 
 <script setup lang="ts">
