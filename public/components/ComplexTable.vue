@@ -59,7 +59,7 @@ const selectedColumns = ref()
 // this variable is introduced to keep columns order when selected columns change
 const tableColumns = ref()
 
-onMounted(()=>{
+onMounted(() => {
   filteredTableData.value = props.tableData
   availableColumns = Object.keys(props.tableData[0])
   searchColumns.value = [...availableColumns]
