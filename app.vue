@@ -37,7 +37,7 @@ onMounted(() => {
 .exercises{
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 2rem;
 }
 
 .max-width{
