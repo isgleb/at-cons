@@ -16,8 +16,6 @@
 </template>
 
 <script setup lang="ts">
-import MultiSelect from 'primevue/multiselect';
-import Button from "primevue/button";
 import {PropType} from "@vue/runtime-core";
 import {computed, ref} from "#imports";
 

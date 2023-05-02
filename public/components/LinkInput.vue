@@ -20,8 +20,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import Button from 'primevue/button'
-import InputText from 'primevue/inputtext'
 import 'primeicons/primeicons.css';
 import {computed, ref} from "#imports";
 
