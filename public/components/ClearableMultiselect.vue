@@ -4,8 +4,7 @@
         :options="options"
         :showToggleAll=false
         optionLabel="name"
-        v-model="selectedOptions"
-        class="w-full md:w-20rem"/>
+        v-model="selectedOptions"/>
     <Button
         v-if="!isSelectedEmpty"
         @click="clear"
