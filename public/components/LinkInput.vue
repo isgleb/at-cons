@@ -9,8 +9,10 @@
           :placeholder="placeHolder"
           :class="{'p-invalid': !isLinkValid}"
           v-model="link"
+          @keyup.enter="focusOut"
           @focus="focusIn"
-          @focusout="focusOut"/>
+          @focusout="focusOut"
+      />
       <Button
           v-if="showEdit"
           @click="setEditing"
