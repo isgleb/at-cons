@@ -29,7 +29,6 @@
             :options="availableColumns"
             v-model="selectedColumns"
             placeholder="Поля таблицы"
-            style="flex-grow: 2"
             :maxSelectedLabels="0"
             selectedItemsLabel="{0} пол."
         />
