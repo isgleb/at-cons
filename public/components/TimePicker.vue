@@ -48,7 +48,6 @@ function setTimeNow(){
 </script>
 
 <style scoped lang="scss">
-
 hr{
   border: var(--surface-border) solid 1px;
 }

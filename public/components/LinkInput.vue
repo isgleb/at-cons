@@ -1,24 +1,22 @@
 <template>
-  <div>
-    <div class="p-inputgroup">
-      <button class="link-button" v-if="titleMode" >
-        <a :href="placeHolder + link">{{title}}</a>
-      </button>
-      <InputText
-          v-else
-          :placeholder="placeHolder"
-          :class="{'p-invalid': !isLinkValid}"
-          v-model="link"
-          @keyup.enter="focusOut"
-          @focus="focusIn"
-          @focusout="focusOut"
-      />
-      <Button
-          v-if="showEdit"
-          @click="setEditing"
-          :icon="icon"
-      />
-    </div>
+  <div class="p-inputgroup">
+    <button class="link-button" v-if="titleMode" >
+      <a :href="placeHolder + link">{{title}}</a>
+    </button>
+    <InputText
+        v-else
+        :placeholder="placeHolder"
+        :class="{'p-invalid': !isLinkValid}"
+        v-model="link"
+        @keyup.enter="focusOut"
+        @focus="focusIn"
+        @focusout="focusOut"
+    />
+    <Button
+        v-if="showEdit"
+        @click="setEditing"
+        :icon="icon"
+    />
   </div>
 </template>
 <script setup lang="ts">

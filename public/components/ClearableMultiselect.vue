@@ -12,7 +12,6 @@
         severity="danger"
     />
   </div>
-
 </template>
 
 <script setup lang="ts">
