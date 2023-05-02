@@ -116,6 +116,7 @@ function cleanFilter() {
   width: 100%;
   .p-inputtext{
     border-radius: 0 !important;
+    border-left: none;
     width: 100%;
   }
 }
