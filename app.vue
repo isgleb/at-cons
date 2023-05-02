@@ -1,9 +1,9 @@
 <template>
   <div class="exercises">
-    <link-input/>
-    <time-picker/>
-    <clearable-multiselect :options="cities"/>
-    <cell-table :cell-string="logString"/>
+    <link-input class="max-width"/>
+    <time-picker class="max-width"/>
+    <clearable-multiselect :options="cities" class="max-width"/>
+    <cell-table :cell-string="logString" class="max-width"/>
     <complex-table :tableData="products"/>
   </div>
 </template>
@@ -38,5 +38,9 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 40px;
+}
+
+.max-width{
+  max-width: 400px;
 }
 </style>

@@ -30,7 +30,7 @@
                 v-model="selectedColumns"
                 class="w-full md:w-10rem"
                 style="flex-grow: 2"
-                :maxSelectedLabels="2"
+                :maxSelectedLabels="0"
             />
         </span>
       </template>
@@ -89,6 +89,9 @@ function filterTable(){
       for (const column of searchColumns.value) {
         const field = obj[column]
         if (field && typeof field === "string" && field.includes(substring)) {
+          return true;
+        }
+        if (field && typeof field === "number" && field.toString().includes(substring)) {
           return true;
         }
       }
