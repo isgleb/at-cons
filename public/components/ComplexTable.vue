@@ -17,6 +17,7 @@
             <InputText
                 placeholder="Поиск..."
                 v-model="searchValue"
+                @keyup.enter="filterTable"
             />
           </span>
           <Button
