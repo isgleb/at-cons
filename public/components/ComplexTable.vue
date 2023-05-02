@@ -5,13 +5,13 @@
         tableStyle="min-width: 50rem"
         paginator :rows="5">
       <template #header>
-        <span style="display:flex; gap: 5px">
+        <span class="header-wrapper">
             <span class="p-inputgroup">
                 <MultiSelect
                     v-model="searchColumns"
                     :options="tableColumns"
-                    dropdownIcon="pi pi-sliders-v"
                     class="selector-custom-button"
+                    dropdownIcon="pi pi-sliders-v"
                 >
               </MultiSelect>
               <span class="p-input-icon-right input-block">
@@ -28,9 +28,10 @@
             <MultiSelect
                 :options="availableColumns"
                 v-model="selectedColumns"
-                class="w-full md:w-10rem"
+                placeholder="Поля таблицы"
                 style="flex-grow: 2"
                 :maxSelectedLabels="0"
+                selectedItemsLabel="{0} пол."
             />
         </span>
       </template>
@@ -88,10 +89,11 @@ function filterTable(){
     filteredTableData.value = props.tableData?.filter((obj: any) => {
       for (const column of searchColumns.value) {
         const field = obj[column]
-        if (field && typeof field === "string" && field.includes(substring)) {
+
+        if (typeof field === "string" && field.includes(substring)) {
           return true;
         }
-        if (field && typeof field === "number" && field.toString().includes(substring)) {
+        if (typeof field === "number" && field.toString().includes(substring)) {
           return true;
         }
       }
@@ -108,6 +110,15 @@ function cleanFilter() {
 </script>
 
 <style lang="scss">
+
+.header-wrapper{
+  display:flex;
+  gap: 5px;
+
+  .p-multiselect{
+    width: 20%;
+  }
+}
 
 .input-block{
   width: 100%;
