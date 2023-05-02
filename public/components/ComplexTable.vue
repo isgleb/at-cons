@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue';
+import {onMounted, ref} from 'vue';
 import {watch} from "#imports";
 import {PropType} from "@vue/runtime-core";
 
@@ -59,13 +59,11 @@ const selectedColumns = ref()
 // this variable is introduced to keep columns order when selected columns change
 const tableColumns = ref()
 
-watch(props, () => {
-  if (props.tableData) {
-    filteredTableData.value = props.tableData
-    availableColumns = Object.keys(props.tableData[0])
-    searchColumns.value = [...availableColumns]
-    selectedColumns.value = [...availableColumns]
-  }
+onMounted(()=>{
+  filteredTableData.value = props.tableData
+  availableColumns = Object.keys(props.tableData[0])
+  searchColumns.value = [...availableColumns]
+  selectedColumns.value = [...availableColumns]
 })
 
 watch(selectedColumns, () => {
