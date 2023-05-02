@@ -6,7 +6,7 @@
         paginator :rows="5">
       <template #header>
         <span style="display:flex; gap: 5px">
-            <span class="p-inputgroup" style="flex-grow: 8">
+            <span class="p-inputgroup">
                 <MultiSelect
                     v-model="searchColumns"
                     :options="tableColumns"
@@ -14,18 +14,12 @@
                     class="selector-custom-button"
                 >
               </MultiSelect>
-              <span class="p-input-icon-right">
-                <i class="pi pi-times" @click="cleanFilter" v-if="searchValue !== ''"/>
+              <span class="p-input-icon-right input-block">
+                <i class="pi pi-times" @click="cleanFilter" v-if="true"/>
                 <InputText
-                    style="width: 100%"
                     placeholder="Поиск..."
                     v-model="searchValue"/>
               </span>
-<!--              <InputText-->
-<!--                  placeholder="Поиск..."-->
-<!--                  v-model="searchValue"-->
-<!--                  class="p-inputgroup-addon"-->
-<!--              />-->
               <Button
                   @click="filterTable"
                   label="Search"
@@ -40,8 +34,6 @@
             />
         </span>
       </template>
-<!--      {{selectedColumns}}-->
-<!--      {{searchColumns}}-->
       <Column v-for="col of tableColumns"  sortable :key="col" :field="col" :header="col"></Column>
     </DataTable>
   </div>
@@ -113,6 +105,14 @@ function cleanFilter() {
 </script>
 
 <style lang="scss">
+
+.input-block{
+  width: 100%;
+  .p-inputtext{
+    border-radius: 0 !important;
+    width: 100%;
+  }
+}
 .selector-custom-button{
   background-color: var(--green-500);
   flex: none !important;
