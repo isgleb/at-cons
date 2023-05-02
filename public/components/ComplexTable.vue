@@ -45,6 +45,7 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Button from 'primevue/button';
 import MultiSelect from 'primevue/multiselect';
+import InputText from 'primevue/inputtext'
 import {ref} from 'vue';
 import {watch} from "#imports";
 import {PropType} from "@vue/runtime-core";
