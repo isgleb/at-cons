@@ -15,7 +15,7 @@
                 >
               </MultiSelect>
               <span class="p-input-icon-right input-block">
-                <i class="pi pi-times" @click="cleanFilter" v-if="true"/>
+                <i class="pi pi-times" @click="cleanFilter" v-if="searchValue !== ''"/>
                 <InputText
                     placeholder="Поиск..."
                     v-model="searchValue"/>
