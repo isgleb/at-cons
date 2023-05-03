@@ -31,7 +31,7 @@ if (props.time && /\d{1,2}:\d{1,2}/.test(props.time)) {
 
 watch(date, () => {
   if (date.value) {
-    const stringValue = `${date.value.getHours()}:${date.value.getMinutes()}`
+    const stringValue = date.value.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
     emits("update:time", stringValue)
   } else return null
 })
