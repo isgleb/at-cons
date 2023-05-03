@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import Calendar from 'primevue/calendar';
-import {ref, watch} from "#imports";
+import {onMounted, ref, watch} from "#imports";
 
 const props = defineProps({
   time: { type: String, required: false }
@@ -21,13 +21,15 @@ const emits = defineEmits(["update:time"])
 
 const date = ref()
 
-if (props.time && /\d{1,2}:\d{1,2}/.test(props.time)) {
-  date.value = new Date()
-  date.value.setHours(parseInt(props.time.split(":")[0]))
-  date.value.setMinutes(parseInt(props.time.split(":")[1]))
-} else {
-  date.value = null
-}
+onMounted(()=>{
+  if (props.time && /\d{1,2}:\d{1,2}/.test(props.time)) {
+    date.value = new Date()
+    date.value.setHours(parseInt(props.time.split(":")[0]))
+    date.value.setMinutes(parseInt(props.time.split(":")[1]))
+  } else {
+    date.value = null
+  }
+})
 
 watch(date, () => {
   if (date.value) {
