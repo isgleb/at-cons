@@ -1,5 +1,5 @@
 <template>
-  <calendar v-model="date" timeOnly>
+  <calendar :modelValue="date" @update:modelValue="update" timeOnly>
     <template #footer>
       <hr>
       <div class="controls">
@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import Calendar from 'primevue/calendar';
-import {onMounted, ref, watch} from "#imports";
+import {onMounted, ref} from "#imports";
 
 const props = defineProps({
   time: { type: String, required: false }
@@ -31,19 +31,18 @@ onMounted(()=>{
   }
 })
 
-watch(date, () => {
-  if (date.value) {
-    const stringValue = date.value.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-    emits("update:time", stringValue)
-  } else return null
-})
+function update(val?: Date) {
+  date.value = val
+  const stringValue = val?.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+  emits("update:time", stringValue)
+}
 
 function clearTime() {
-  date.value = null
+  update()
 }
 
 function setTimeNow(){
-  date.value = new Date()
+  update(new Date())
 }
 
 </script>
