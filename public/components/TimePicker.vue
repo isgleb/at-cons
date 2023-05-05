@@ -3,8 +3,8 @@
     <template #footer>
       <hr>
       <div class="controls">
-        <button @click="setTimeNow">Сейчас</button>
-        <button @click="clearTime">Очистить</button>
+        <button @click="update(new Date())">Сейчас</button>
+        <button @click="update(null)">Очистить</button>
       </div>
     </template>
   </calendar>
@@ -31,18 +31,10 @@ onMounted(()=>{
   }
 })
 
-function update(val?: Date) {
+function update(val: Date|null) {
   date.value = val
   const stringValue = val?.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
   emits("update:time", stringValue)
-}
-
-function clearTime() {
-  update()
-}
-
-function setTimeNow(){
-  update(new Date())
 }
 
 </script>
